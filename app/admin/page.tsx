@@ -17,27 +17,27 @@ export default function AdminDashboard() {
   const statCards = [
     {
       title: "Total Bookings",
-      value: stats?.totalBookings || 0,
+      value: stats?.bookings?.total || 0,
       icon: Calendar,
-      description: "Active confirmed bookings",
+      description: `Pending: ${stats?.bookings?.pending || 0}`,
     },
     {
       title: "Total Revenue",
-      value: `₹${Number(stats?.totalRevenue || 0).toLocaleString()}`,
+      value: `₹${Number(stats?.bookings?.revenue || 0).toLocaleString()}`,
       icon: DollarSign,
       description: "From confirmed bookings",
     },
     {
-      title: "Pending Bookings",
-      value: stats?.pendingBookings || 0,
-      icon: MessageSquare,
-      description: "Awaiting confirmation",
+      title: "Total Users",
+      value: stats?.users?.total || 0,
+      icon: Users,
+      description: `${stats?.users?.admins || 0} Admins`,
     },
     {
-      title: "Completed",
-      value: stats?.completedBookings || 0,
-      icon: Users,
-      description: "Finished sessions",
+      title: "Active Services",
+      value: stats?.content?.services || 0,
+      icon: MessageSquare, // Using MessageSquare as generic icon, ideally use Layers or similar
+      description: `${stats?.content?.plans || 0} Subscription Plans`,
     },
   ]
 
@@ -95,13 +95,12 @@ export default function AdminDashboard() {
                       {new Date(booking.bookingDate).toLocaleDateString()}
                     </p>
                     <span
-                      className={`inline-block px-2 py-1 rounded text-xs ${
-                        booking.status === "confirmed"
+                      className={`inline-block px-2 py-1 rounded text-xs ${booking.status === "confirmed"
                           ? "bg-accent/10 text-accent"
                           : booking.status === "pending"
                             ? "bg-yellow-500/10 text-yellow-600"
                             : "bg-red-500/10 text-red-600"
-                      }`}
+                        }`}
                     >
                       {booking.status}
                     </span>

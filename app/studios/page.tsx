@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { Mic, Video, Users, Square, Headphones, Monitor, ArrowRight, CheckCircle2 } from "lucide-react"
+import { API_ENDPOINTS } from "@/lib/api-config"
 
 export const metadata = {
   title: "Studios - Vox Edge Media",
@@ -11,7 +12,21 @@ export const metadata = {
     "Explore Vox Edge Media's professional podcast and video production studios equipped with state-of-the-art technology.",
 }
 
-export default function StudiosPage() {
+async function getContent(key: string) {
+  try {
+    const res = await fetch(API_ENDPOINTS.CONTENT.GET(key), { cache: 'no-store' });
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json.success ? json.data : null;
+  } catch (error) {
+    console.error(`Failed to fetch content ${key}:`, error);
+    return null;
+  }
+}
+
+export default async function StudiosPage() {
+  const heroContent = await getContent('studio_hero');
+
   const podcastFeatures = [
     "Shure SM7B and Neumann U87 microphones",
     "Acoustic treatment and soundproofing",
@@ -38,11 +53,10 @@ export default function StudiosPage() {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center space-y-6">
           <h1 className="text-4xl md:text-6xl font-display font-bold tracking-tight text-balance">
-            Professional Studios for Every Creator
+            {heroContent?.title || "Professional Studios for Every Creator"}
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground text-pretty">
-            State-of-the-art facilities designed for podcasters, video creators, and content producers who demand the
-            best.
+            {heroContent?.content || "State-of-the-art facilities designed for podcasters, video creators, and content producers who demand the best."}
           </p>
         </div>
       </section>

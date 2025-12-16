@@ -2,10 +2,20 @@ import { createSlice, createAsyncThunk, type PayloadAction } from "@reduxjs/tool
 import { apiClient } from "@/lib/api-client"
 
 interface DashboardStats {
-  totalBookings: number
-  pendingBookings: number
-  completedBookings: number
-  totalRevenue: number
+  bookings: {
+    total: number
+    pending: number
+    completed: number
+    revenue: number
+  }
+  users: {
+    total: number
+    admins: number
+  }
+  content: {
+    services: number
+    plans: number
+  }
 }
 
 interface Booking {

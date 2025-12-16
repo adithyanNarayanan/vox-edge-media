@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { LayoutDashboard, Calendar, MessageSquare, LogOut } from "lucide-react"
+import { LayoutDashboard, Calendar, MessageSquare, LogOut, Mic, CreditCard, Settings, Users } from "lucide-react"
 import { useAppDispatch } from "@/lib/redux/hooks"
 import { logoutUser } from "@/lib/redux/slices/authSlice"
 
@@ -14,6 +14,10 @@ export function AdminNav() {
 
   const navigation = [
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
+    { name: "Users", href: "/admin/users", icon: Users },
+    { name: "Services", href: "/admin/services", icon: Mic },
+    { name: "Plans", href: "/admin/plans", icon: CreditCard },
+    { name: "Studio", href: "/admin/studio", icon: Settings },
     { name: "Bookings", href: "/admin/bookings", icon: Calendar },
     { name: "Messages", href: "/admin/messages", icon: MessageSquare },
   ]
@@ -39,11 +43,10 @@ export function AdminNav() {
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors ${
-                isActive
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-              }`}
+              className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors ${isActive
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
             >
               <item.icon className="h-5 w-5" />
               <span className="font-medium">{item.name}</span>

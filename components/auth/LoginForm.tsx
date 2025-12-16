@@ -86,9 +86,14 @@ export default function LoginForm() {
 
         setIsLoading(true);
         try {
-            await login(email, password);
+            const user = await login(email, password);
             toast.success("Logged in successfully!");
-            router.push("/");
+
+            if (user && user.role === 'admin') {
+                router.push("/admin");
+            } else {
+                router.push("/");
+            }
         } catch (error: any) {
             console.error(error);
             toast.error(error.message || "Invalid email or password");

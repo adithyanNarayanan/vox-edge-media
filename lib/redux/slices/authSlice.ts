@@ -1,14 +1,15 @@
 import { createSlice, createAsyncThunk, type PayloadAction } from "@reduxjs/toolkit"
 import { apiClient } from "@/lib/api-client"
 
-interface User {
+export interface User {
   id: string
   name?: string
   displayName?: string
   email: string
   phone?: string
   phoneNumber?: string
-  isAdmin: boolean
+  role?: string
+  isAdmin?: boolean
   photoURL?: string
 }
 

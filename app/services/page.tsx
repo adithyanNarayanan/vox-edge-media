@@ -3,15 +3,42 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
-import { Mic, Video, Headphones, Palette, Users, FileAudio, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react"
+import { Mic, Video, Headphones, Palette, Users, FileAudio, Sparkles, ArrowRight, CheckCircle2, Film, Camera, Music } from "lucide-react"
+import { API_ENDPOINTS } from "@/lib/api-config"
 
 export const metadata = {
   title: "Services - Vox Edge Media",
   description: "Comprehensive podcast and video production services from recording to post-production at Vox Edge Media.",
 }
 
-export default function ServicesPage() {
-  const services = [
+const iconMap: Record<string, any> = {
+  'mic': Mic,
+  'video': Video,
+  'headphones': Headphones,
+  'palette': Palette,
+  'users': Users,
+  'file-audio': FileAudio,
+  'film': Film,
+  'camera': Camera,
+  'music': Music
+}
+
+async function getServices() {
+  try {
+    const res = await fetch(API_ENDPOINTS.SERVICES.LIST, { cache: 'no-store' });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (error) {
+    console.error("Failed to fetch services:", error);
+    return null;
+  }
+}
+
+export default async function ServicesPage() {
+  const servicesData = await getServices();
+  const dbServices = servicesData?.data || [];
+
+  const staticServices = [
     {
       icon: Mic,
       title: "Podcast Recording",
@@ -78,7 +105,15 @@ export default function ServicesPage() {
         "Training and coaching",
       ],
     },
-  ]
+  ];
+
+  // Map DB services to view model or use static
+  const services = dbServices.length > 0 ? dbServices.map((s: any) => ({
+    icon: iconMap[s.icon?.toLowerCase()] || Mic,
+    title: s.title,
+    description: s.description,
+    features: s.features || []
+  })) : staticServices;
 
   const packages = [
     {
@@ -146,25 +181,28 @@ export default function ServicesPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/50">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 space-y-4">
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <service.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-display font-semibold">{service.title}</h3>
-                  <p className="text-muted-foreground">{service.description}</p>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm">
-                        <CheckCircle2 className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
-                        <span className="text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
+            {services.map((service: any, index: number) => {
+              const Icon = service.icon || Mic;
+              return (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 space-y-4">
+                    <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-display font-semibold">{service.title}</h3>
+                    <p className="text-muted-foreground">{service.description}</p>
+                    <ul className="space-y-2">
+                      {service.features.map((feature: string, idx: number) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm">
+                          <CheckCircle2 className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
+                          <span className="text-muted-foreground">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>

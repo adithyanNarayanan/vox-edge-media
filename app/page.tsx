@@ -4,8 +4,23 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { Mic, Video, Headphones, Sparkles, Users, Award, ArrowRight } from "lucide-react"
+import { API_ENDPOINTS } from "@/lib/api-config"
 
-export default function HomePage() {
+async function getContent(key: string) {
+  try {
+    const res = await fetch(API_ENDPOINTS.CONTENT.GET(key), { cache: 'no-store' });
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json.success ? json.data : null;
+  } catch (error) {
+    console.error(`Failed to fetch content ${key}:`, error);
+    return null;
+  }
+}
+
+export default async function HomePage() {
+  const heroContent = await getContent('home_hero');
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -22,12 +37,11 @@ export default function HomePage() {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-display font-bold tracking-tight text-balance">
-              Creators Are Made Here
+              {heroContent?.title || "Creators Are Made Here"}
             </h1>
 
             <p className="mx-auto max-w-2xl text-lg md:text-xl text-muted-foreground text-pretty">
-              Professional podcast and video production studio where your creative vision comes to life.
-              State-of-the-art equipment, expert team, and seamless workflow.
+              {heroContent?.content || "Professional podcast and video production studio where your creative vision comes to life. State-of-the-art equipment, expert team, and seamless workflow."}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
