@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react"
+import { Instagram, Linkedin, Youtube, Facebook, Mail, Phone, MapPin } from "lucide-react"
 
 export function Footer() {
   return (
@@ -11,14 +11,17 @@ export function Footer() {
             <h3 className="text-lg font-display font-bold">Vox Edge Media</h3>
             <p className="text-sm text-muted-foreground">Premium podcast and video production studio in Bangalore.</p>
             <div className="flex gap-4">
-              <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="https://www.instagram.com/voxedgemedia1?igsh=OHQzZjl3aTNqdmx2" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Instagram className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="https://www.linkedin.com/company/voxedgemedia/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Linkedin className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="https://www.youtube.com/@VoxEdgeMedia" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
                 <Youtube className="h-5 w-5" />
+              </Link>
+              <Link href="https://www.facebook.com/profile.php?id=61584797120932" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Facebook className="h-5 w-5" />
               </Link>
             </div>
           </div>
