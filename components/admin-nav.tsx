@@ -7,7 +7,11 @@ import { LayoutDashboard, Calendar, MessageSquare, LogOut, Mic, CreditCard, Sett
 import { useAppDispatch } from "@/lib/redux/hooks"
 import { logoutUser } from "@/lib/redux/slices/authSlice"
 
-export function AdminNav() {
+interface AdminNavProps extends React.HTMLAttributes<HTMLElement> {
+  onLinkClick?: () => void
+}
+
+export function AdminNav({ className, onLinkClick, ...props }: AdminNavProps) {
   const pathname = usePathname()
   const router = useRouter()
   const dispatch = useAppDispatch()
@@ -29,8 +33,8 @@ export function AdminNav() {
   }
 
   return (
-    <nav className="w-64 border-r border-border bg-secondary/50 min-h-screen p-6 flex flex-col">
-      <div className="mb-8">
+    <nav className={`flex flex-col gap-2 ${className || "w-64 border-r border-border bg-secondary/50 min-h-screen p-6"}`} {...props}>
+      <div className="mb-8 px-2">
         <Link href="/" className="text-2xl font-display font-bold">
           Studio Admin
         </Link>
@@ -43,6 +47,7 @@ export function AdminNav() {
             <Link
               key={item.name}
               href={item.href}
+              onClick={onLinkClick}
               className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors ${isActive
                 ? "bg-primary text-primary-foreground"
                 : "text-muted-foreground hover:text-foreground hover:bg-secondary"
@@ -55,7 +60,7 @@ export function AdminNav() {
         })}
       </div>
 
-      <Button onClick={handleLogout} variant="outline" className="w-full bg-transparent">
+      <Button onClick={handleLogout} variant="outline" className="w-full bg-transparent mt-auto">
         <LogOut className="h-4 w-4 mr-2" />
         Logout
       </Button>

@@ -117,9 +117,8 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-2">
+          <div className="md:hidden py-4 space-y-2 bg-background border-b border-border shadow-lg">
             {navigation.map((item) => (
               <Link
                 key={item.name}

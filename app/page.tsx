@@ -47,7 +47,7 @@ export default async function HomePage() {
               Vox Edge Media - Premium Production Studio
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-display font-bold tracking-tight text-balance">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold tracking-tight text-balance">
               {heroContent?.title || "Creators Are Made Here"}
             </h1>
 
@@ -56,13 +56,13 @@ export default async function HomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button asChild size="lg" className="text-base">
+              <Button asChild size="lg" className="text-base w-full sm:w-auto">
                 <Link href="/booking">
                   Book Your Session
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-base bg-transparent">
+              <Button asChild size="lg" variant="outline" className="text-base bg-transparent w-full sm:w-auto">
                 <Link href="/studios">Explore Studios</Link>
               </Button>
             </div>
@@ -77,8 +77,8 @@ export default async function HomePage() {
                 className="w-full h-full object-cover"
               />
             </div>
-            {/* Floating Cards */}
-            <div className="absolute -bottom-8 left-4 md:left-12">
+            {/* Floating Cards - Desktop */}
+            <div className="hidden md:block absolute -bottom-8 left-12">
               <Card className="bg-background shadow-lg">
                 <CardContent className="p-4 flex items-center gap-3">
                   <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
@@ -91,7 +91,7 @@ export default async function HomePage() {
                 </CardContent>
               </Card>
             </div>
-            <div className="absolute -bottom-8 right-4 md:right-12">
+            <div className="hidden md:block absolute -bottom-8 right-12">
               <Card className="bg-background shadow-lg">
                 <CardContent className="p-4 flex items-center gap-3">
                   <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
@@ -104,6 +104,32 @@ export default async function HomePage() {
                 </CardContent>
               </Card>
             </div>
+          </div>
+
+          {/* Feature Cards - Mobile */}
+          <div className="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+            <Card className="bg-background shadow-lg">
+              <CardContent className="p-4 flex items-center gap-3">
+                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Mic className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold">Podcast Studio</p>
+                  <p className="text-sm text-muted-foreground">Professional Audio</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="bg-background shadow-lg">
+              <CardContent className="p-4 flex items-center gap-3">
+                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Video className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold">Video Studio</p>
+                  <p className="text-sm text-muted-foreground">4K Production</p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

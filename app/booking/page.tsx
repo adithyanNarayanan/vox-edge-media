@@ -181,7 +181,7 @@ export default function BookingPage() {
                 {/* Date Picker */}
                 <div className="space-y-2">
                   <Label>Booking Date *</Label>
-                  <div className="border rounded-lg p-4">
+                  <div className="border rounded-lg p-4 overflow-x-auto flex justify-center">
                     <Calendar
                       mode="single"
                       selected={date}
