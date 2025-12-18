@@ -66,7 +66,7 @@ export default function ConfirmationPage() {
               </div>
 
               <p className="text-xs text-muted-foreground pt-4">
-                Need to make changes? Contact us at hello@studio.com or call +91 XXXXX XXXXX
+                Need to make changes? Contact us at voxedgemedia01@gmail.com or call +91 9447220618
               </p>
             </CardContent>
           </Card>

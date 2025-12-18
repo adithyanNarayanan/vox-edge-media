@@ -70,15 +70,19 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>111, 3rd Main, CIL Layout, Sanjay Nagar, Bangalore</span>
+                <span>NO 111, 3RD MAIN, CIL LAYOUT, SANJAYNAGAR, R.M.V. Extension II Stage, Bangalore North, Bangalore- 560094, Karnataka</span>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <span>hello@studio.com</span>
+                <Link href="mailto:voxedgemedia01@gmail.com" className="hover:text-foreground transition-colors">
+                  voxedgemedia01@gmail.com
+                </Link>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                <span>+91 XXXXX XXXXX</span>
+                <Link href="tel:+919447220618" className="hover:text-foreground transition-colors">
+                  +91 9447220618
+                </Link>
               </li>
             </ul>
           </div>

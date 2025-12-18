@@ -153,9 +153,7 @@ export default function ContactPage() {
                         <div>
                           <p className="font-medium">Location</p>
                           <p className="text-sm text-muted-foreground">
-                            111, 3rd Main, CIL Layout
-                            <br />
-                            Sanjay Nagar, Bangalore
+                            NO 111, 3RD MAIN, CIL LAYOUT, SANJAYNAGAR, R.M.V. Extension II Stage, Bangalore North, Bangalore- 560094, Karnataka
                           </p>
                         </div>
                       </div>
@@ -167,10 +165,10 @@ export default function ContactPage() {
                         <div>
                           <p className="font-medium">Email</p>
                           <a
-                            href="mailto:hello@studio.com"
+                            href="mailto:voxedgemedia01@gmail.com"
                             className="text-sm text-muted-foreground hover:text-primary"
                           >
-                            hello@studio.com
+                            voxedgemedia01@gmail.com
                           </a>
                         </div>
                       </div>
@@ -181,8 +179,8 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <p className="font-medium">Phone</p>
-                          <a href="tel:+91XXXXXXXXXX" className="text-sm text-muted-foreground hover:text-primary">
-                            +91 XXXXX XXXXX
+                          <a href="tel:+919447220618" className="text-sm text-muted-foreground hover:text-primary">
+                            +91 9447220618
                           </a>
                         </div>
                       </div>
@@ -230,7 +228,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/50">
         <div className="mx-auto max-w-7xl">
@@ -292,6 +290,6 @@ export default function ContactPage() {
       </section>
 
       <Footer />
-    </div>
+    </div >
   )
 }
