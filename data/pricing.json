@@ -1,0 +1,115 @@
+{
+  "staticPlans": [
+    {
+      "name": "Podcast Basic",
+      "price": "₹2,500",
+      "duration": "per hour",
+      "description": "Perfect for solo podcasters and interviews",
+      "features": [
+        "Premium podcast studio",
+        "Up to 2 guests",
+        "Multi-track recording",
+        "Basic audio editing",
+        "48-hour delivery",
+        "Professional engineer support"
+      ],
+      "popular": false
+    },
+    {
+      "name": "Podcast Pro",
+      "price": "₹4,000",
+      "duration": "per hour",
+      "description": "Ideal for professional podcasters",
+      "features": [
+        "Premium podcast studio",
+        "Up to 6 guests",
+        "Multi-track recording",
+        "Advanced audio editing & mastering",
+        "24-hour delivery",
+        "Professional engineer support",
+        "Show notes & timestamps",
+        "Audiogram creation"
+      ],
+      "popular": true
+    },
+    {
+      "name": "Video Basic",
+      "price": "₹5,000",
+      "duration": "per hour",
+      "description": "Great for YouTube creators",
+      "features": [
+        "Professional video studio",
+        "Single camera 4K recording",
+        "Professional lighting",
+        "Basic video editing",
+        "5-day delivery",
+        "Professional engineer support"
+      ],
+      "popular": false
+    },
+    {
+      "name": "Video Pro",
+      "price": "₹8,000",
+      "duration": "per hour",
+      "description": "Perfect for professional content",
+      "features": [
+        "Professional video studio",
+        "Multi-camera 4K setup",
+        "Professional lighting & audio",
+        "Advanced editing & color grading",
+        "3-day delivery",
+        "Full production team",
+        "Motion graphics included",
+        "Custom thumbnails"
+      ],
+      "popular": true
+    },
+    {
+      "name": "Full Production",
+      "price": "₹12,000",
+      "duration": "per hour",
+      "description": "Complete production package",
+      "features": [
+        "Both podcast & video studios",
+        "Multi-camera 4K setup",
+        "Full production team",
+        "Premium editing & post-production",
+        "Same-day delivery option",
+        "Motion graphics & animations",
+        "Social media clips",
+        "Dedicated project manager"
+      ],
+      "popular": false
+    }
+  ],
+  "addOns": [
+    { "name": "Additional Editing Hour", "price": "₹1,500" },
+    { "name": "Motion Graphics Package", "price": "₹3,000" },
+    { "name": "Social Media Clips (5 clips)", "price": "₹2,000" },
+    { "name": "Thumbnail Design", "price": "₹800" },
+    { "name": "Audiogram (per minute)", "price": "₹200" },
+    { "name": "Rush Delivery (24h)", "price": "₹2,500" }
+  ],
+  "faqs": [
+    {
+      "q": "Can I book for multiple hours?",
+      "a": "Yes! We offer discounts for bookings of 4+ hours. Contact us for custom packages."
+    },
+    {
+      "q": "What's included in the editing?",
+      "a": "Basic editing includes trimming, noise reduction, and basic mixing. Advanced packages include mastering, color grading, and effects."
+    },
+    {
+      "q": "Do you offer monthly packages?",
+      "a": "Yes, we have monthly subscription packages for regular creators. Contact us for details."
+    },
+    {
+      "q": "What's your cancellation policy?",
+      "a": "Free cancellation up to 48 hours before your booking. Cancellations within 48 hours incur a 50% fee."
+    },
+    {
+      "q": "Can I bring my own equipment?",
+      "a": "You're welcome to bring any additional equipment you'd like to use."
+    }
+  ]
+}

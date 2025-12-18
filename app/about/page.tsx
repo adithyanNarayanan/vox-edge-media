@@ -4,58 +4,23 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { Target, Heart, Lightbulb, Users } from "lucide-react"
+import aboutData from "@/data/about.json"
 
 export const metadata = {
   title: "About Us - Studio",
   description: "Learn about our mission to empower creators with professional podcast and video production facilities.",
 }
 
-export default function AboutPage() {
-  const values = [
-    {
-      icon: Target,
-      title: "Quality First",
-      description: "We never compromise on the quality of our equipment or services. Your content deserves the best.",
-    },
-    {
-      icon: Heart,
-      title: "Creator-Focused",
-      description: "Every decision we make is centered around helping creators succeed and grow their audience.",
-    },
-    {
-      icon: Lightbulb,
-      title: "Innovation",
-      description: "We stay ahead with the latest technology and techniques in content production.",
-    },
-    {
-      icon: Users,
-      title: "Community",
-      description: "Building a network of creators who support and inspire each other to reach new heights.",
-    },
-  ]
+const iconMap: Record<string, any> = {
+  'Target': Target,
+  'Heart': Heart,
+  'Lightbulb': Lightbulb,
+  'Users': Users
+}
 
-  const team = [
-    {
-      name: "Rajesh Kumar",
-      role: "Founder & CEO",
-      bio: "15 years of experience in audio engineering and production.",
-    },
-    {
-      name: "Priya Sharma",
-      role: "Head of Video Production",
-      bio: "Award-winning cinematographer with a passion for storytelling.",
-    },
-    {
-      name: "Arjun Patel",
-      role: "Audio Engineer",
-      bio: "Specialized in podcast production and sound design.",
-    },
-    {
-      name: "Meera Singh",
-      role: "Client Success Manager",
-      bio: "Dedicated to ensuring every creator has an amazing experience.",
-    },
-  ]
+export default function AboutPage() {
+  const values = aboutData.values;
+  const team = aboutData.team;
 
   return (
     <div className="min-h-screen">
@@ -119,17 +84,20 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {values.map((value, index) => (
-              <Card key={index}>
-                <CardContent className="p-6 space-y-4">
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <value.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-display font-semibold">{value.title}</h3>
-                  <p className="text-muted-foreground">{value.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {values.map((value: any, index: number) => {
+              const Icon = iconMap[value.icon] || Target;
+              return (
+                <Card key={index}>
+                  <CardContent className="p-6 space-y-4">
+                    <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-display font-semibold">{value.title}</h3>
+                    <p className="text-muted-foreground">{value.description}</p>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -144,7 +112,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
+            {team.map((member: any, index: number) => (
               <Card key={index}>
                 <CardContent className="p-6 space-y-4">
                   <div className="aspect-square rounded-lg bg-secondary overflow-hidden">

@@ -1,0 +1,63 @@
+{
+    "podcastFeatures": [
+        "Shure SM7B and Neumann U87 microphones",
+        "Acoustic treatment and soundproofing",
+        "Multi-track recording (up to 8 guests)",
+        "Real-time audio processing and monitoring",
+        "Comfortable seating for long sessions",
+        "ISDN and remote recording capabilities"
+    ],
+    "videoFeatures": [
+        "4K cinema cameras with multiple angles",
+        "Professional LED lighting systems",
+        "Green screen and custom backdrops",
+        "Wireless lavalier microphones",
+        "Teleprompter and monitor setups",
+        "Live switching and preview monitors"
+    ],
+    "includedServices": [
+        {
+            "icon": "Users",
+            "title": "Technical Support",
+            "description": "Professional engineer to help with setup and recording"
+        },
+        {
+            "icon": "Headphones",
+            "title": "Basic Editing",
+            "description": "Basic post-production included in every package"
+        },
+        {
+            "icon": "Monitor",
+            "title": "Fast Delivery",
+            "description": "Quick turnaround time for edited content"
+        }
+    ],
+    "studios": [
+        {
+            "id": "podcast",
+            "name": "Podcast Recording Studio",
+            "description": "Our podcast studio is designed for crystal-clear audio quality. Whether you're recording solo or with multiple guests, we provide the perfect environment for professional podcast production.",
+            "guests": "Up to 8 Guests",
+            "size": "250 sq ft",
+            "image": "/professional-podcast-recording-studio-with-microph.jpg",
+            "secondaryImages": [
+                "/podcast-studio-microphone-close-up.jpg",
+                "/podcast-studio-control-panel.jpg"
+            ],
+            "features": "podcastFeatures"
+        },
+        {
+            "id": "video",
+            "name": "Video Production Studio",
+            "description": "Create stunning video content in our fully-equipped video studio. From YouTube videos to corporate productions, we have everything you need for professional-quality video.",
+            "guests": "4K Recording",
+            "size": "400 sq ft",
+            "image": "/professional-video-production-studio-with-cameras-.jpg",
+            "secondaryImages": [
+                "/video-studio-lighting-setup.jpg",
+                "/video-studio-green-screen.jpg"
+            ],
+            "features": "videoFeatures"
+        }
+    ]
+}

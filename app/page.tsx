@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { Mic, Video, Headphones, Sparkles, Users, Award, ArrowRight } from "lucide-react"
 import { API_ENDPOINTS } from "@/lib/api-config"
+import homeData from "@/data/home.json"
 
 async function getContent(key: string) {
   try {
@@ -18,8 +19,18 @@ async function getContent(key: string) {
   }
 }
 
+const iconMap: Record<string, any> = {
+  'Award': Award,
+  'Users': Users,
+  'Headphones': Headphones,
+  'Mic': Mic,
+  'Video': Video
+}
+
 export default async function HomePage() {
   const heroContent = await getContent('home_hero');
+  const features = homeData.features;
+  const studios = homeData.studios;
 
   return (
     <div className="min-h-screen">
@@ -108,41 +119,22 @@ export default async function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card>
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Award className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-display font-semibold">Premium Equipment</h3>
-                <p className="text-muted-foreground">
-                  Industry-leading microphones, cameras, and lighting equipment for broadcast-quality production.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-display font-semibold">Expert Team</h3>
-                <p className="text-muted-foreground">
-                  Experienced audio engineers and videographers to bring your vision to life.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6 space-y-4">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Headphones className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-display font-semibold">Full Production</h3>
-                <p className="text-muted-foreground">
-                  From recording to editing and post-production, we handle everything for you.
-                </p>
-              </CardContent>
-            </Card>
+            {features.map((feature: any, index: number) => {
+              const Icon = iconMap[feature.icon] || Award;
+              return (
+                <Card key={index}>
+                  <CardContent className="p-6 space-y-4">
+                    <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-display font-semibold">{feature.title}</h3>
+                    <p className="text-muted-foreground">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -158,47 +150,28 @@ export default async function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-              <div className="aspect-video relative overflow-hidden">
-                <img
-                  src="/professional-podcast-recording-studio-with-microph.jpg"
-                  alt="Podcast Studio"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardContent className="p-6 space-y-2">
-                <h3 className="text-2xl font-display font-semibold">Podcast Studio</h3>
-                <p className="text-muted-foreground">
-                  Acoustically treated space with premium microphones and audio processing for crystal-clear recordings.
-                </p>
-                <Button asChild variant="link" className="px-0">
-                  <Link href="/studios#podcast">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
-              <div className="aspect-video relative overflow-hidden">
-                <img
-                  src="/professional-video-production-studio-with-cameras-.jpg"
-                  alt="Video Studio"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardContent className="p-6 space-y-2">
-                <h3 className="text-2xl font-display font-semibold">Video Studio</h3>
-                <p className="text-muted-foreground">
-                  Spacious studio with 4K cameras, professional lighting, and customizable backdrops for any production.
-                </p>
-                <Button asChild variant="link" className="px-0">
-                  <Link href="/studios#video">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
+            {studios.map((studio: any, index: number) => (
+              <Card key={index} className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow">
+                <div className="aspect-video relative overflow-hidden">
+                  <img
+                    src={studio.image}
+                    alt={studio.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <CardContent className="p-6 space-y-2">
+                  <h3 className="text-2xl font-display font-semibold">{studio.title}</h3>
+                  <p className="text-muted-foreground">
+                    {studio.description}
+                  </p>
+                  <Button asChild variant="link" className="px-0">
+                    <Link href={studio.link}>
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

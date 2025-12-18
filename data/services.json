@@ -1,0 +1,133 @@
+{
+    "staticServices": [
+        {
+            "icon": "Mic",
+            "title": "Podcast Recording",
+            "description": "Professional podcast recording with multi-track capabilities and real-time monitoring.",
+            "features": [
+                "Premium microphones (Shure SM7B, Neumann U87)",
+                "Acoustic treatment for pristine audio",
+                "Multi-track recording up to 8 guests",
+                "Real-time audio processing"
+            ]
+        },
+        {
+            "icon": "Video",
+            "title": "Video Production",
+            "description": "Full-service video production from pre-production planning to final delivery.",
+            "features": [
+                "4K video recording with multiple cameras",
+                "Professional lighting setups",
+                "Green screen and custom backdrops",
+                "Live switching and monitoring"
+            ]
+        },
+        {
+            "icon": "Headphones",
+            "title": "Audio Engineering",
+            "description": "Expert audio mixing and mastering to ensure broadcast-quality sound.",
+            "features": [
+                "Professional mixing and mastering",
+                "Noise reduction and audio cleanup",
+                "Loudness optimization for platforms",
+                "Sound design and effects"
+            ]
+        },
+        {
+            "icon": "Palette",
+            "title": "Post-Production",
+            "description": "Complete post-production services including editing, color grading, and graphics.",
+            "features": [
+                "Professional video editing",
+                "Color grading and correction",
+                "Motion graphics and titles",
+                "Audio sync and enhancement"
+            ]
+        },
+        {
+            "icon": "Users",
+            "title": "Live Streaming",
+            "description": "Multi-camera live streaming setup for events, podcasts, and webinars.",
+            "features": [
+                "Multi-platform streaming (YouTube, Twitch, etc.)",
+                "Professional switching and graphics",
+                "Real-time engagement tools",
+                "Recording for later use"
+            ]
+        },
+        {
+            "icon": "FileAudio",
+            "title": "Consultation",
+            "description": "Expert guidance on content strategy, equipment, and production workflows.",
+            "features": [
+                "Content strategy development",
+                "Equipment recommendations",
+                "Workflow optimization",
+                "Training and coaching"
+            ]
+        }
+    ],
+    "packages": [
+        {
+            "name": "Podcast Package",
+            "price": "₹3,000",
+            "duration": "per hour",
+            "description": "Perfect for podcast creators and interviews",
+            "features": [
+                "Premium podcast studio",
+                "Up to 4 guests",
+                "Multi-track recording",
+                "Basic audio editing",
+                "Delivery in 48 hours"
+            ]
+        },
+        {
+            "name": "Video Package",
+            "price": "₹5,000",
+            "duration": "per hour",
+            "description": "Ideal for video content creators",
+            "features": [
+                "Professional video studio",
+                "4K multi-camera setup",
+                "Professional lighting",
+                "Basic video editing",
+                "Delivery in 5 days"
+            ]
+        },
+        {
+            "name": "Premium Package",
+            "price": "₹8,000",
+            "duration": "per hour",
+            "description": "Complete production with all bells and whistles",
+            "features": [
+                "Both podcast and video studios",
+                "Full production team",
+                "Advanced post-production",
+                "Motion graphics included",
+                "Priority delivery in 3 days"
+            ]
+        }
+    ],
+    "process": [
+        {
+            "step": "01",
+            "title": "Book Your Session",
+            "desc": "Choose your studio and time slot online"
+        },
+        {
+            "step": "02",
+            "title": "Pre-Production",
+            "desc": "We'll help you plan and prepare"
+        },
+        {
+            "step": "03",
+            "title": "Recording Day",
+            "desc": "Professional recording in our studio"
+        },
+        {
+            "step": "04",
+            "title": "Post & Delivery",
+            "desc": "Editing, mixing, and final delivery"
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "values": [
+        {
+            "icon": "Target",
+            "title": "Quality First",
+            "description": "We never compromise on the quality of our equipment or services. Your content deserves the best."
+        },
+        {
+            "icon": "Heart",
+            "title": "Creator-Focused",
+            "description": "Every decision we make is centered around helping creators succeed and grow their audience."
+        },
+        {
+            "icon": "Lightbulb",
+            "title": "Innovation",
+            "description": "We stay ahead with the latest technology and techniques in content production."
+        },
+        {
+            "icon": "Users",
+            "title": "Community",
+            "description": "Building a network of creators who support and inspire each other to reach new heights."
+        }
+    ],
+    "team": [
+        {
+            "name": "Rajesh Kumar",
+            "role": "Founder & CEO",
+            "bio": "15 years of experience in audio engineering and production."
+        },
+        {
+            "name": "Priya Sharma",
+            "role": "Head of Video Production",
+            "bio": "Award-winning cinematographer with a passion for storytelling."
+        },
+        {
+            "name": "Arjun Patel",
+            "role": "Audio Engineer",
+            "bio": "Specialized in podcast production and sound design."
+        },
+        {
+            "name": "Meera Singh",
+            "role": "Client Success Manager",
+            "bio": "Dedicated to ensuring every creator has an amazing experience."
+        }
+    ]
+}

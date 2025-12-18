@@ -5,11 +5,18 @@ import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { Mic, Video, Users, Square, Headphones, Monitor, ArrowRight, CheckCircle2 } from "lucide-react"
 import { API_ENDPOINTS } from "@/lib/api-config"
+import studiosData from "@/data/studios.json"
 
 export const metadata = {
   title: "Studios - Vox Edge Media",
   description:
     "Explore Vox Edge Media's professional podcast and video production studios equipped with state-of-the-art technology.",
+}
+
+const iconMap: Record<string, any> = {
+  'Users': Users,
+  'Headphones': Headphones,
+  'Monitor': Monitor
 }
 
 async function getContent(key: string) {
@@ -27,23 +34,9 @@ async function getContent(key: string) {
 export default async function StudiosPage() {
   const heroContent = await getContent('studio_hero');
 
-  const podcastFeatures = [
-    "Shure SM7B and Neumann U87 microphones",
-    "Acoustic treatment and soundproofing",
-    "Multi-track recording (up to 8 guests)",
-    "Real-time audio processing and monitoring",
-    "Comfortable seating for long sessions",
-    "ISDN and remote recording capabilities",
-  ]
-
-  const videoFeatures = [
-    "4K cinema cameras with multiple angles",
-    "Professional LED lighting systems",
-    "Green screen and custom backdrops",
-    "Wireless lavalier microphones",
-    "Teleprompter and monitor setups",
-    "Live switching and preview monitors",
-  ]
+  const podcastFeatures = studiosData.podcastFeatures;
+  const videoFeatures = studiosData.videoFeatures;
+  const includedServices = studiosData.includedServices;
 
   return (
     <div className="min-h-screen">
@@ -104,7 +97,7 @@ export default async function StudiosPage() {
               <div className="space-y-3">
                 <h3 className="font-display font-semibold text-lg">Studio Features</h3>
                 <ul className="space-y-2">
-                  {podcastFeatures.map((feature, index) => (
+                  {podcastFeatures.map((feature: string, index: number) => (
                     <li key={index} className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                       <span className="text-muted-foreground">{feature}</span>
@@ -212,7 +205,7 @@ export default async function StudiosPage() {
               <div className="space-y-3">
                 <h3 className="font-display font-semibold text-lg">Studio Features</h3>
                 <ul className="space-y-2">
-                  {videoFeatures.map((feature, index) => (
+                  {videoFeatures.map((feature: string, index: number) => (
                     <li key={index} className="flex items-start gap-2">
                       <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                       <span className="text-muted-foreground">{feature}</span>
@@ -247,33 +240,20 @@ export default async function StudiosPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card>
-              <CardContent className="p-6 space-y-3 text-center">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-display font-semibold">Technical Support</h3>
-                <p className="text-muted-foreground">Professional engineer to help with setup and recording</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 space-y-3 text-center">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto">
-                  <Headphones className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-display font-semibold">Basic Editing</h3>
-                <p className="text-muted-foreground">Basic post-production included in every package</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6 space-y-3 text-center">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto">
-                  <Monitor className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-display font-semibold">Fast Delivery</h3>
-                <p className="text-muted-foreground">Quick turnaround time for edited content</p>
-              </CardContent>
-            </Card>
+            {includedServices.map((service: any, index: number) => {
+              const Icon = iconMap[service.icon] || Users;
+              return (
+                <Card key={index}>
+                  <CardContent className="p-6 space-y-3 text-center">
+                    <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto">
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-display font-semibold">{service.title}</h3>
+                    <p className="text-muted-foreground">{service.description}</p>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
         </div>
       </section>

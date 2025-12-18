@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { Mic, Video, Headphones, Palette, Users, FileAudio, Sparkles, ArrowRight, CheckCircle2, Film, Camera, Music } from "lucide-react"
 import { API_ENDPOINTS } from "@/lib/api-config"
+import servicesData from "@/data/services.json"
 
 export const metadata = {
   title: "Services - Vox Edge Media",
@@ -12,6 +13,16 @@ export const metadata = {
 }
 
 const iconMap: Record<string, any> = {
+  'Mic': Mic,
+  'Video': Video,
+  'Headphones': Headphones,
+  'Palette': Palette,
+  'Users': Users,
+  'FileAudio': FileAudio,
+  'Film': Film,
+  'Camera': Camera,
+  'Music': Music,
+  // case-insensitive fallback if needed or if DB uses lowercase
   'mic': Mic,
   'video': Video,
   'headphones': Headphones,
@@ -35,127 +46,24 @@ async function getServices() {
 }
 
 export default async function ServicesPage() {
-  const servicesData = await getServices();
-  const dbServices = servicesData?.data || [];
+  const servicesRes = await getServices();
+  const dbServices = servicesRes?.data || [];
 
-  const staticServices = [
-    {
-      icon: Mic,
-      title: "Podcast Recording",
-      description: "Professional podcast recording with multi-track capabilities and real-time monitoring.",
-      features: [
-        "Premium microphones (Shure SM7B, Neumann U87)",
-        "Acoustic treatment for pristine audio",
-        "Multi-track recording up to 8 guests",
-        "Real-time audio processing",
-      ],
-    },
-    {
-      icon: Video,
-      title: "Video Production",
-      description: "Full-service video production from pre-production planning to final delivery.",
-      features: [
-        "4K video recording with multiple cameras",
-        "Professional lighting setups",
-        "Green screen and custom backdrops",
-        "Live switching and monitoring",
-      ],
-    },
-    {
-      icon: Headphones,
-      title: "Audio Engineering",
-      description: "Expert audio mixing and mastering to ensure broadcast-quality sound.",
-      features: [
-        "Professional mixing and mastering",
-        "Noise reduction and audio cleanup",
-        "Loudness optimization for platforms",
-        "Sound design and effects",
-      ],
-    },
-    {
-      icon: Palette,
-      title: "Post-Production",
-      description: "Complete post-production services including editing, color grading, and graphics.",
-      features: [
-        "Professional video editing",
-        "Color grading and correction",
-        "Motion graphics and titles",
-        "Audio sync and enhancement",
-      ],
-    },
-    {
-      icon: Users,
-      title: "Live Streaming",
-      description: "Multi-camera live streaming setup for events, podcasts, and webinars.",
-      features: [
-        "Multi-platform streaming (YouTube, Twitch, etc.)",
-        "Professional switching and graphics",
-        "Real-time engagement tools",
-        "Recording for later use",
-      ],
-    },
-    {
-      icon: FileAudio,
-      title: "Consultation",
-      description: "Expert guidance on content strategy, equipment, and production workflows.",
-      features: [
-        "Content strategy development",
-        "Equipment recommendations",
-        "Workflow optimization",
-        "Training and coaching",
-      ],
-    },
-  ];
+  const staticServices = servicesData.staticServices;
 
   // Map DB services to view model or use static
   const services = dbServices.length > 0 ? dbServices.map((s: any) => ({
-    icon: iconMap[s.icon?.toLowerCase()] || Mic,
+    icon: iconMap[s.icon] || iconMap[s.icon?.toLowerCase()] || Mic,
     title: s.title,
     description: s.description,
     features: s.features || []
-  })) : staticServices;
+  })) : staticServices.map((s: any) => ({
+    ...s,
+    icon: iconMap[s.icon] || Mic
+  }));
 
-  const packages = [
-    {
-      name: "Podcast Package",
-      price: "₹3,000",
-      duration: "per hour",
-      description: "Perfect for podcast creators and interviews",
-      features: [
-        "Premium podcast studio",
-        "Up to 4 guests",
-        "Multi-track recording",
-        "Basic audio editing",
-        "Delivery in 48 hours",
-      ],
-    },
-    {
-      name: "Video Package",
-      price: "₹5,000",
-      duration: "per hour",
-      description: "Ideal for video content creators",
-      features: [
-        "Professional video studio",
-        "4K multi-camera setup",
-        "Professional lighting",
-        "Basic video editing",
-        "Delivery in 5 days",
-      ],
-    },
-    {
-      name: "Premium Package",
-      price: "₹8,000",
-      duration: "per hour",
-      description: "Complete production with all bells and whistles",
-      features: [
-        "Both podcast and video studios",
-        "Full production team",
-        "Advanced post-production",
-        "Motion graphics included",
-        "Priority delivery in 3 days",
-      ],
-    },
-  ]
+  const packages = servicesData.packages;
+  const processSteps = servicesData.process;
 
   return (
     <div className="min-h-screen">
@@ -217,7 +125,7 @@ export default async function ServicesPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {packages.map((pkg, index) => (
+            {packages.map((pkg: any, index: number) => (
               <Card key={index} className={index === 1 ? "border-primary shadow-lg" : ""}>
                 <CardContent className="p-8 space-y-6">
                   <div className="space-y-2">
@@ -231,7 +139,7 @@ export default async function ServicesPage() {
                     </div>
                   </div>
                   <ul className="space-y-3">
-                    {pkg.features.map((feature, idx) => (
+                    {pkg.features.map((feature: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-2">
                         <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                         <span className="text-sm">{feature}</span>
@@ -258,12 +166,7 @@ export default async function ServicesPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { step: "01", title: "Book Your Session", desc: "Choose your studio and time slot online" },
-              { step: "02", title: "Pre-Production", desc: "We'll help you plan and prepare" },
-              { step: "03", title: "Recording Day", desc: "Professional recording in our studio" },
-              { step: "04", title: "Post & Delivery", desc: "Editing, mixing, and final delivery" },
-            ].map((item, index) => (
+            {processSteps.map((item: any, index: number) => (
               <div key={index} className="space-y-3">
                 <div className="text-5xl font-display font-bold text-primary/20">{item.step}</div>
                 <h3 className="text-xl font-display font-semibold">{item.title}</h3>

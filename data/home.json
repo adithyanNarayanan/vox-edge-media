@@ -1,0 +1,33 @@
+{
+    "features": [
+        {
+            "icon": "Award",
+            "title": "Premium Equipment",
+            "description": "Industry-leading microphones, cameras, and lighting equipment for broadcast-quality production."
+        },
+        {
+            "icon": "Users",
+            "title": "Expert Team",
+            "description": "Experienced audio engineers and videographers to bring your vision to life."
+        },
+        {
+            "icon": "Headphones",
+            "title": "Full Production",
+            "description": "From recording to editing and post-production, we handle everything for you."
+        }
+    ],
+    "studios": [
+        {
+            "title": "Podcast Studio",
+            "description": "Acoustically treated space with premium microphones and audio processing for crystal-clear recordings.",
+            "image": "/professional-podcast-recording-studio-with-microph.jpg",
+            "link": "/studios#podcast"
+        },
+        {
+            "title": "Video Studio",
+            "description": "Spacious studio with 4K cameras, professional lighting, and customizable backdrops for any production.",
+            "image": "/professional-video-production-studio-with-cameras-.jpg",
+            "link": "/studios#video"
+        }
+    ]
+}

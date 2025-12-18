@@ -39,7 +39,7 @@ export function Header() {
         <div className="flex h-20 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-3 font-display font-bold text-xl">
-              <img src="/logo3.png" alt="Vox Edge Media Logo" className="h-12 w-auto" />
+              <img src="/logo5.png" alt="Vox Edge Media Logo" className="h-12 w-auto" />
             </Link>
           </div>
 
