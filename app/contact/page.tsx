@@ -153,11 +153,9 @@ export default function ContactPage() {
                         <div>
                           <p className="font-medium">Location</p>
                           <p className="text-sm text-muted-foreground">
-                            123 Studio Street
+                            111, 3rd Main, CIL Layout
                             <br />
-                            Koramangala, Bangalore
-                            <br />
-                            Karnataka 560034
+                            Sanjay Nagar, Bangalore
                           </p>
                         </div>
                       </div>

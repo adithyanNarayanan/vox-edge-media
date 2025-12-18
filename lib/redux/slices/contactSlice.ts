@@ -15,7 +15,7 @@ const initialState: ContactState = {
 
 export const submitContactForm = createAsyncThunk(
   "contact/submit",
-  async (formData: { name: string; email: string; subject: string; message: string }, { rejectWithValue }) => {
+  async (formData: { name: string; email: string; phone: string; message: string }, { rejectWithValue }) => {
     try {
       const data = await apiClient.post("/contact", formData)
       return data
