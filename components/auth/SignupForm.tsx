@@ -191,7 +191,7 @@ export default function SignupForm() {
         setIsLoading(true);
         try {
             // ✅ STEP 1: Check if email is already in use
-            const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5000';
+            const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://vox-edge-media-backend.onrender.com';
             console.log("🔍 Checking email availability...");
             console.log("📡 API URL for email check:", API_URL);
             console.log("🔗 Full endpoint for email check:", `${API_URL}/api/auth/check-email`);

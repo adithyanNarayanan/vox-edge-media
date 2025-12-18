@@ -1,7 +1,7 @@
 // API Configuration
 // Update these endpoints to point to your backend server
 // Backend API URL - ensure it ends with /api
-export const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:5000"}/api`
+export const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_URL || "https://vox-edge-media-backend.onrender.com"}/api`
 
 export const API_ENDPOINTS = {
   // Auth endpoints
